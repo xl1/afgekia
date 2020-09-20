@@ -1,0 +1,14 @@
+body {
+    font-family: 'Consolas', monospace;
+    padding-bottom: 18px;
+}
+[v-cloak] {
+    display: none;
+}
+tr th {
+    text-align: left;
+    border-bottom: 1px solid black;
+}
+th, td {
+    padding: 3px 9px;
+}

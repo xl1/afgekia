@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Azure Functions Dashboard</title>
+        <link rel="stylesheet" href="index.css">
+    </head>
+    <body>
+        <table id="list">
+            <tr>
+                <th>App</th>
+                <th>Function</th>
+                <th>Trigger</th>
+                <th>Enabled</th>
+                <th>Last Executed</th>
+                <th>Logs</th>
+                <th>Run</th>
+            </tr>
+            <tr v-for="item in items">
+                <td>{{ item.appName }}</td>
+                <td>{{ item.name }}</td>
+                <td :title="triggerDescription(item)">{{ item.trigger?.type }}</td>
+                <td>{{ item.enabled }}</td>
+                <td>{{ item.lastExecuted }}</td>
+                <td><a :href="logHref(item.id)" target="_blank">Open</a></td>
+                <td><button @click.prevent="run(item)">Run</button></td>
+            </tr>
+        </table>
+        <script type="module" src="index.js"></script>
+    </body>
+</html>
