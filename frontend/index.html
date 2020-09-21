@@ -11,8 +11,9 @@
                 <th>App</th>
                 <th>Function</th>
                 <th>Trigger</th>
+                <th>Schedule</th>
                 <th>Enabled</th>
-                <th>Last Executed</th>
+                <th>Last Scheduled</th>
                 <th>Logs</th>
                 <th>Run</th>
             </tr>
@@ -20,6 +21,7 @@
                 <td>{{ item.appName }}</td>
                 <td>{{ item.name }}</td>
                 <td :title="triggerDescription(item)">{{ item.trigger?.type }}</td>
+                <td>{{ item.trigger?.schedule }}</td>
                 <td>{{ item.enabled }}</td>
                 <td>{{ item.lastExecuted }}</td>
                 <td><a :href="logHref(item.id)" target="_blank">Open</a></td>
