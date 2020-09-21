@@ -1,5 +1,6 @@
 export type FunctionModel = {
     id: string;
+    resourceGroup: string;
     appName: string;
     name: string;
     trigger: undefined | {

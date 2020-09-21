@@ -6,8 +6,15 @@ const api = {
     list() {
         return fetch('/api/list').then(r => r.json());
     },
-    async restart(id) {
-        throw new Error('not implemented');
+    restart(item, body) {
+        return fetch('/api/restart', {
+            method: 'POST',
+            headers: {
+                'content-type': 'application/json',
+                'x-requested-with': 'fetch'
+            },
+            body: JSON.stringify({ item, body }),
+        }).then(r => r.ok);
     }
 };
 
@@ -33,8 +40,11 @@ new Vue({
         },
         /** @param {import('../src/models.js').FunctionModel} item */
         async run(item) {
-            if (window.confirm(`Will you restart ${item.name}`)) {
-                await api.restart(item.id);
+            const body = window.prompt(`Restarting function "${item.name}"\nRequest body:`, '{}');
+            if (body != null) {
+                if (await api.restart(item, body)) {
+                    window.alert('Accepted');
+                }
             }
         }
     },
